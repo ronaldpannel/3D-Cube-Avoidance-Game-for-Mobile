@@ -11,7 +11,6 @@ const rightBtn = document.getElementById("rightBtn");
 const backBtn = document.getElementById("backBtn");
 const forwardBtn = document.getElementById("forwardBtn");
 const jumpBtn = document.getElementById("jumpBtn");
-
 let score = 0;
 
 //create renderer
@@ -64,6 +63,10 @@ const keys = {
   w: {
     pressed: false,
   },
+};
+
+let touch = {
+  move: false,
 };
 
 class Box extends THREE.Mesh {
@@ -258,18 +261,22 @@ function playerControl() {
     cube.velocity.z += -0.05;
   }
   if (keys.s.pressed) {
-    cube.velocity.z = 0.05;
+    cube.velocity.z += 0.05;
   }
+
+  rightBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    touch.move = true
+    if (touch.move) {
+      cube.position.x += cube.velocity.x;
+      cube.velocity.x = 0.005;
+    }
+  });
+   rightBtn.addEventListener("touchend", (e) => {
+     e.preventDefault();
+    touch.move = true
+   });
 }
-leftBtn.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  console.log("clicked");
-  cube.velocity.x += -0.05;
-});
-leftBtn.addEventListener("touchend", (e) => {
-  e.preventDefault();
-  cube.velocity.x = 0;
-});
 
 window.addEventListener("keydown", (e) => {
   if (e.key.toLowerCase() == "a") {
