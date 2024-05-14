@@ -266,16 +266,29 @@ function playerControl() {
 
   rightBtn.addEventListener("touchstart", (e) => {
     e.preventDefault();
-    touch.move = true
+    touch.move = true;
     if (touch.move) {
       cube.position.x += cube.velocity.x;
-      cube.velocity.x = 0.005;
+      cube.velocity.x = 0.003;
     }
   });
-   rightBtn.addEventListener("touchend", (e) => {
-     e.preventDefault();
-    touch.move = true
-   });
+  rightBtn.addEventListener("touchend", (e) => {
+    e.preventDefault();
+    touch.move = false;
+  });
+
+  leftBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    touch.move = true;
+    if (touch.move) {
+      cube.position.x += cube.velocity.x;
+      cube.velocity.x = -0.003;
+    }
+  });
+  leftBtn.addEventListener("touchend", (e) => {
+    e.preventDefault();
+    touch.move = false;
+  });
 }
 
 window.addEventListener("keydown", (e) => {
