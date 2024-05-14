@@ -5,6 +5,13 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 const gameOverDisplay = document.getElementById("gameOverDisplay");
 const scores = document.getElementById("scores");
 const gameOverScore = document.getElementById("score");
+
+const leftBtn = document.getElementById("leftBtn");
+const rightBtn = document.getElementById("rightBtn");
+const backBtn = document.getElementById("backBtn");
+const forwardBtn = document.getElementById("forwardBtn");
+const jumpBtn = document.getElementById("jumpBtn");
+
 let score = 0;
 
 //create renderer
@@ -224,7 +231,7 @@ function animate() {
     enemies.push(enemy);
   }
   frames++;
-  console.log(score);
+
   scores.innerHTML = score;
   gameOverScore.innerHTML = score;
 }
@@ -248,15 +255,23 @@ function playerControl() {
     cube.velocity.x = 0.05;
   }
   if (keys.w.pressed) {
-    cube.velocity.z = -0.05;
+    cube.velocity.z += -0.05;
   }
   if (keys.s.pressed) {
     cube.velocity.z = 0.05;
   }
 }
+leftBtn.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  console.log("clicked");
+  cube.velocity.x += -0.05;
+});
+leftBtn.addEventListener("touchend", (e) => {
+  e.preventDefault();
+  cube.velocity.x = 0;
+});
 
 window.addEventListener("keydown", (e) => {
-  console.log(e.key);
   if (e.key.toLowerCase() == "a") {
     keys.a.pressed = true;
   }
