@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Avoid the Blocks for Mobile</title>
+
+    <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/"
+    }
+  }
+</script>
+  </head>
+
+
+
+  <body>
+    <h1 class="scoreDisplay" id="scoreDisplay">Score: <span id="scores">3</span></h1>
+    <div class="gameOverDisplay" id="gameOverDisplay">
+      <h1>Game Over</h1>
+      <h3>Your Score Was: <span class="score" id="score">0</span></h3>
+    </div>
+<div class="controls1">
+  <button class="rightBtn" id="rightBtn">R</button>
+    <button class="leftBtn" id="leftBtn">L</button>
+   <button class="jumpBtn" id="JumpBtn">J</button>
+</div>
+
+<div class="controls2">
+ <button class="forwardBtn" id="forwardBtn">F</button>
+    <button class="backBtn" id="backBtn">B</button>
+</div>
+    
+   
+   
+    
+
+
+    <script type="module" src="index.js" ></script>
+</html>
+  
