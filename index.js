@@ -289,6 +289,46 @@ function playerControl() {
     e.preventDefault();
     touch.move = false;
   });
+
+  backBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    touch.move = true;
+    if (touch.move) {
+      cube.position.z += cube.velocity.z;
+      cube.velocity.z = 0.003;
+    }
+  });
+  backBtn.addEventListener("touchend", (e) => {
+    e.preventDefault();
+    touch.move = false;
+  });
+
+  forwardBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    touch.move = true;
+    if (touch.move) {
+      cube.position.z += cube.velocity.z;
+      cube.velocity.z = -0.003;
+    }
+  });
+  forwardBtn.addEventListener("touchend", (e) => {
+    e.preventDefault();
+    touch.move = false;
+  });
+
+  jumpBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+
+    touch.move = true;
+    if (touch.move && cube.velocity.y > -0.001) {
+      cube.position.y += cube.velocity.y;
+      cube.velocity.y = 0.01;
+    }
+  });
+  jumpBtn.addEventListener("touchend", (e) => {
+    e.preventDefault();
+    touch.move = false;
+  });
 }
 
 window.addEventListener("keydown", (e) => {
